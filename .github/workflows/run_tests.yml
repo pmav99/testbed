@@ -22,6 +22,9 @@ jobs:
         python-version:
           - "38"
           - "39"
+    env:
+      CONDA_LOCK_FILE: "conda-{{ matrix.os }}-64-p{{ matrix.python-version }}-s{{ matrix.schism-version }}-{{ matrix.mpi-backend }}.lock"
+
     runs-on: "${{ matrix.os }}-latest"
     defaults:
       run:
@@ -32,3 +35,14 @@ jobs:
 
       - name: "Debug"
         uses: "hmarr/debug-action@v2"
+
+      - name: "check matrix values"
+        run:
+          - "echo {{ matrix.os }}"
+          - "echo {{ matrix.mpi-backend }}"
+          - "echo {{ matrix.schism-version }}"
+          - "echo {{ matrix.python-version }}"
+
+      - name: "check conda lock value"
+        run:
+          - "echo {{ env.CONDA_LOCK_FILE }}"
