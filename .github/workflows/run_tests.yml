@@ -23,7 +23,7 @@ jobs:
           - "38"
           - "39"
     env:
-      CONDA_LOCK_FILE: "conda-{{ matrix.os }}-64-p{{ matrix.python-version }}-s{{ matrix.schism-version }}-{{ matrix.mpi-backend }}.lock"
+      CONDA_LOCK_FILE: "conda-${{ matrix.os }}-64-p${{ matrix.python-version }}-s${{ matrix.schism-version }}-${{ matrix.mpi-backend }}.lock"
 
     runs-on: "${{ matrix.os }}-latest"
     defaults:
