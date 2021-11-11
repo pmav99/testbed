@@ -1,0 +1,36 @@
+---
+
+---
+name: "Run Tests"
+
+on:
+  - "push"
+  - "pull_request"
+
+jobs:
+  run_tests:
+    name: "Run Tests name"
+    strategy:
+      fail-fast: true
+      matrix:
+        os:
+          - "ubuntu"
+          - "macos"
+        mpi-backend:
+          - "mpich"
+          - "openmpi"
+        schism-version:
+          - 5.8
+        python-version:
+          - "38"
+          - "39"
+    runs-on: "${{ matrix.os }}-latest"
+    defaults:
+      run:
+        shell: "bash -l {0}"
+    steps:
+      - name: "Checkout repo"
+        uses: "actions/checkout@v2"
+
+      - name: "Debug"
+        uses: "hmarr/debug-action@v2"
