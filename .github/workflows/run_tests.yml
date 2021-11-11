@@ -37,12 +37,12 @@ jobs:
         uses: "hmarr/debug-action@v2"
 
       - name: "check matrix values"
-        run:
-          - "echo {{ matrix.os }}"
-          - "echo {{ matrix.mpi-backend }}"
-          - "echo {{ matrix.schism-version }}"
-          - "echo {{ matrix.python-version }}"
+        run: |
+          echo {{ matrix.os }}
+          echo {{ matrix.mpi-backend }}
+          echo {{ matrix.schism-version }}
+          echo {{ matrix.python-version }}
 
       - name: "check conda lock value"
-        run:
-          - "echo {{ env.CONDA_LOCK_FILE }}"
+        run: |
+          echo {{ env.CONDA_LOCK_FILE }}
